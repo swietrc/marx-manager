@@ -1,7 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Database creation
+
+### With Docker and `docker-compose` :
+
+Run 
+```docker-compose run app rake db:create && docker-compose run app rake db:migrate```
 
 Things you may want to cover:
 
