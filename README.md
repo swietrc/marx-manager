@@ -4,7 +4,8 @@
 
 ### With Docker and `docker-compose` :
 
-> Run `docker-compose run app rake db:create && docker-compose run app rake db:migrate`
+Run 
+```docker-compose run app rake db:create && docker-compose run app rake db:migrate```
 
 Things you may want to cover:
 
