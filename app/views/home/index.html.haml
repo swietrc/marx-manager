@@ -1,2 +1,7 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+
+- if current_user.nil?
+	= link_to new_user_session_path, class: 'login-button' do
+		Sign in
+- else
+	= link_to dashboard_index_path, class: 'login-button' do
+		Go to App
