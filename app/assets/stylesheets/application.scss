@@ -14,3 +14,10 @@
  *= require_self
  *= require toastr
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    padding-top: 70px;
+}

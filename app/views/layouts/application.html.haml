@@ -7,14 +7,13 @@
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
 = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 %body
-  %p
-    = flash.empty?
   - unless flash.empty?
     - flash.each do |f| 
       - type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') 
-      %p 
-        = f[1]
       :javascript
         toastr["#{type}"]("#{f[1]}");
 
-  = yield
+  = render "shared/navbar"
+
+  .container
+    = yield

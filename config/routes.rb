@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
+  get '/admin', to: 'admin#index', as: 'admin'
 
   devise_for :users
     

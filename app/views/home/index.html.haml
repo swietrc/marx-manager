@@ -2,6 +2,6 @@
 - if current_user.nil?
 	= link_to new_user_session_path, class: 'login-button' do
 		Sign in
-- else
-	= link_to dashboard_index_path, class: 'login-button' do
-		Go to App
+- if can? :manage, User
+	= link_to admin_path, class: 'login-button' do
+		Go to Admin page
