@@ -1,1 +1,21 @@
-coucou
+%table{ :class => "table table-striped table-hover" }
+  %thead
+    %tr 
+      %th Nom
+      %th Prénom
+      %th Email
+      %th Admin
+      %th Prof.
+  %tbody
+  - @users.each do |u|
+    %tr
+      %td
+        = u.last_name
+      %td
+        = u.first_name
+      %td
+        = u.email
+      %td
+        = u.is_teacher
+      %td
+        = u.is_admin

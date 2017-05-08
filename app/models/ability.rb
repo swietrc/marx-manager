@@ -32,7 +32,7 @@ class Ability
     if user != nil && user.admin?
       can :manage, :all
     else
-      can :read, :all
+      can :read, User
     end
 
   end
