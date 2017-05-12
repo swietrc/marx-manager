@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   get 'dashboard/index'
-  get '/admin', to: 'admin#index', as: 'admin'
+  get '/admin/(:approval)', to: 'admin#index', as: 'admin'
 
   devise_for :users
     
+  resources :users, only: [:index, :edit, :destroy, :update]
   root to: "home#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

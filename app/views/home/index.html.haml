@@ -1,7 +1,9 @@
 
 - if current_user.nil?
-	= link_to new_user_session_path, class: 'login-button' do
-		Sign in
+  = link_to new_user_session_path, class: 'login-button' do
+    Sign in
 - if can? :manage, User
-	= link_to admin_path, class: 'login-button' do
-		Go to Admin page
+  = link_to admin_path, class: 'login-button' do
+    Go to Admin page
+- if current_user.active_for_authentication?
+  %h1 COUCOU

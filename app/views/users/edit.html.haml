@@ -1,0 +1,17 @@
+%h1 Compte de #{@user.first_name} #{@user.last_name}
+
+= form_for @user do |f|
+  .field
+    = f.label :approved
+    = f.check_box :approved
+
+  %h2 Authorisations
+  .field
+    = f.label :is_admin
+    = f.check_box :is_admin
+  .field
+    = f.label :is_teacher
+    = f.check_box :is_teacher
+
+  .actions
+    = f.submit

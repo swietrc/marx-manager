@@ -3,7 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  
+
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
+
   protected
 
   def configure_permitted_parameters

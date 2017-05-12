@@ -1,3 +1,5 @@
+%h1 Gestion des utilisateurs
+
 %table{ :class => "table table-striped table-hover" }
   %thead
     %tr 
@@ -6,6 +8,7 @@
       %th Email
       %th Admin
       %th Prof.
+      %th
   %tbody
   - @users.each do |u|
     %tr
@@ -16,6 +19,8 @@
       %td
         = u.email
       %td
+        = u.is_admin
+      %td
         = u.is_teacher
       %td
-        = u.is_admin
+        = link_to 'Modifier', edit_user_path(u)
