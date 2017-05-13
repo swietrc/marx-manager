@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'devise'
+gem 'devise_invitable'
 gem "haml-rails", "~> 0.9"
 gem 'toastr-rails'
 gem 'bootstrap-sass', '~> 3.2.0'
