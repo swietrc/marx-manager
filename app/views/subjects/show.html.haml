@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @subject.name
+%p
+  %b Start date:
+  = @subject.start_date
+%p
+  %b Finish date:
+  = @subject.finish_date
+%p
+  %b Owner:
+  = @subject.owner_id
+
+= link_to 'Edit', edit_subject_path(@subject)
+\|
+= link_to 'Back', subjects_path

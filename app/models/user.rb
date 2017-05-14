@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :subjects_students, :class_name => 'SubjectStudent'
+  has_many :subjects, :class_name => 'Subject', :through => :subjects_students
+
   def admin?
     return is_admin
   end
