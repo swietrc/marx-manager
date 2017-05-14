@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 .swp
+docker-compose.yml
 
 # Ignore Byebug command history file.
 .byebug_history
