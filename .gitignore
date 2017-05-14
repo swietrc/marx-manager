@@ -13,7 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 .swp
-docker-compose.yml
+mailer_config.env
 
 # Ignore Byebug command history file.
 .byebug_history
