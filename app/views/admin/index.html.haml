@@ -1,5 +1,5 @@
 %h1 Gestion des utilisateurs
-
+= link_to "Inviter des utilisateurs", new_user_invitation_path
 %table{ :class => "table table-striped table-hover" }
   %thead
     %tr 
@@ -8,6 +8,7 @@
       %th Email
       %th Admin
       %th Prof.
+      %th
       %th
   %tbody
   - @users.each do |u|
@@ -24,3 +25,5 @@
         = u.is_teacher
       %td
         = link_to 'Modifier', edit_user_path(u)
+      %td 
+        = link_to 'Supprimer', user_path(u), method: :delete, data: { confirm: "Êtes-vous sûr ?" }

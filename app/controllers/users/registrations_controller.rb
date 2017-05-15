@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  after_action :send_admins_email, only: :create
 
   # GET /resource/sign_up
   # def new
@@ -10,10 +11,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    admins = User.where("is_admin = true")
-    admins.each |a| do
-        AdminMailer.new_user.deliver_now
-    end
   end
 
   # GET /resource/edit
@@ -61,4 +58,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def send_admins_email
+    if resource.persisted?
+      AdminMailer.new_user_awaiting_approval(resource).deliver_now
+    end
+  end
 end

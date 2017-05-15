@@ -1,0 +1,4 @@
+%p Bonjour #{@admin.first_name}
+
+%p #{@user.first_name} #{@user.last_name} (#{@user.email}) est en attente d'
+  = link_to "activation", edit_user_path(@user)

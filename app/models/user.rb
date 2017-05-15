@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, presence: true, length: { maximum: 40 }
-  validates :last_name, presence: true, length: { maximum: 40 }
+  validates :first_name, length: { maximum: 40 }
+  validates :last_name, length: { maximum: 40 }
 
   has_many :subjects_students, :class_name => 'SubjectStudent'
   has_many :subjects, :class_name => 'Subject', :through => :subjects_students
