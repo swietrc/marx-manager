@@ -1,4 +1,4 @@
-Users::InvitationsController < Devise::InvitaitonsController
+class Users::InvitationsController < Devise::InvitationsController
   before_action :permit_params, if: :devise_controller?
 
   def update

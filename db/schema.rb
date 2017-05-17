@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513203719) do
+ActiveRecord::Schema.define(version: 20170517133247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "exam_student", force: :cascade do |t|
+    t.float    "grade"
+    t.integer  "student_id"
+    t.integer  "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_student_on_exam_id", using: :btree
+    t.index ["student_id"], name: "index_exam_student_on_student_id", using: :btree
+  end
 
   create_table "exams", force: :cascade do |t|
     t.string   "name"
@@ -72,4 +82,6 @@ ActiveRecord::Schema.define(version: 20170513203719) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "exam_student", "exams"
+  add_foreign_key "exam_student", "users", column: "student_id"
 end

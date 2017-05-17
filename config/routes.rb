@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/admin/(:approval)', to: 'admin#index', as: 'admin'
     
 
-  devise_for :users, :controllers => { :registrations => "users/registrations" }
+  devise_for :users, :controllers => { :registrations => "users/registrations", :invitations => "users/invitations" }
 
   resources :users, only: [:index, :edit, :destroy, :update]
   root to: "home#index"
