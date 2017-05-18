@@ -1,18 +1,57 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @subject.name
-%p
-  %b Start date:
-  = @subject.start_date
-%p
-  %b Finish date:
-  = @subject.finish_date
-%p
-  %b Owner:
-  = @subject.owner_id
+%h1 Résumé
 
+%table{ :class => "table table-striped table-hover" }
+  %thead
+    %tr
+      %th Titre
+      %th Date de début
+      %th Date de fin
+      %th Auteur
+  %tbody
+    %tr
+      %td
+        = @subject.name
+      %td
+        = @subject.start_date
+      %td
+        = @subject.finish_date
+      %td
+        = @subject.owner.first_name + " "+ @subject.owner.last_name
+
+
+%h1 Examens
+%table{ :class => "table table-striped table-hover" }
+  %thead
+    %tr
+      %th Intitulé
+      %th Date
+      %th Matiere
+  %tbody
+    - @subject.exams.where(subject:@subject).each do |e|
+      %tr
+        %td
+          = link_to e.name, e
+        %td
+          = e.date
+        %td
+          = link_to e.subject.name, e.subject
+
+
+%h1 Élèves
+%table{ :class => "table table-striped table-hover" }
+  %thead
+    %tr
+      %th Prénoms
+      %th Noms
+  %tbody
+    - @subject.students.sort{|x,y| x.last_name <=> y.last_name}.each do |s|
+      %tr
+        %td
+          = s.first_name
+        %td
+          = s.last_name
 = link_to 'Edit', edit_subject_path(@subject)
 \|
 = link_to 'Back', subjects_path
