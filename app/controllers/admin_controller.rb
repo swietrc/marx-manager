@@ -10,4 +10,14 @@ class AdminController < ApplicationController
         @subjects = Subject.all
         @exams = Exam.all
     end
+
+    def get_all_users
+        u = User.all.map { |user|
+            {
+                id: user.id,
+                email: user.email
+            }
+        }
+        render :json => u
+    end
 end
