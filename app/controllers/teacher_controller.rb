@@ -1,5 +1,5 @@
 class TeacherController < ApplicationController
   def index
-    @subjecs = current_user.subjects
+    @subjects = Subject.where(owner_id: current_user)
   end
 end

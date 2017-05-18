@@ -7,11 +7,12 @@
       %th Date de début
       %th Date de fin
   %tbody
-  - @subjects.each do |s|
-    %tr
-      %td
-        = link_to s.name, s
-      %td
-        = s.start_date
-      %td
-        = s.finish_date
+  - if@subjects
+    - @subjects.each do |s|
+      %tr
+        %td
+          = link_to s.name, s
+        %td
+          = s.start_date
+        %td
+          = s.finish_date
