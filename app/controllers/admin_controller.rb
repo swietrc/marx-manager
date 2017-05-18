@@ -7,5 +7,7 @@ class AdminController < ApplicationController
         else
             @users = User.all
         end
+        @subjects = Subject.all
+        @exams = Exam.all
     end
 end
