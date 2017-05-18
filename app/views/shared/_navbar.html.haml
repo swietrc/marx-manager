@@ -6,11 +6,15 @@
 
     %div{:class => "collapse navbar-collapse", :id => "collapse"}
       %ul{:class => "nav navbar-nav"}
-        -if user_signed_in?
-          %li
-            = link_to "Edit account", edit_user_registration_path
-          %li
-            = link_to "Logout", destroy_user_session_path, :method => :delete
-        - else
-          %li
-            = link_to "Sign in", new_user_session_path
+        - if user_signed_in?
+          - if can? :manage, :all
+            %li
+              = link_to "Admin Dashboard", admin_path
+
+      %ul{:class => "nav navbar-nav navbar-right"}
+        %li
+          = link_to "#{current_user.first_name} #{current_user.last_name}", edit_user_registration_path if user_signed_in?
+        %li
+          = link_to "Sign in", new_user_session_path if !user_signed_in?
+        %li
+          = link_to "Sign out", destroy_user_session_path, :method => :delete if user_signed_in?

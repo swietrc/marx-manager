@@ -8,5 +8,6 @@
 - if current_user && current_user.is_teacher
   = link_to "Teacher", teacher_index_path
 - if current_user && current_user.active_for_authentication?
-
-  %h1 COUCOU
+  = link_to "Admin", admin_path if can? :manage, User
+- if current_user && !current_user.is_teacher
+  = link_to "Test", student_index_path
