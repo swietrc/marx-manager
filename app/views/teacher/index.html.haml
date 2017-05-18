@@ -1,0 +1,17 @@
+%h1 Bonjour M. #{current_user.first_name} #{current_user.last_name}
+
+%table{ :class => "table table-striped table-hover" }
+  %thead
+    %tr
+      %th Titre
+      %th Date de début
+      %th Date de fin
+  %tbody
+  - @subjects.each do |s|
+    %tr
+      %td
+        = link_to s.name, s
+      %td
+        = s.start_date
+      %td
+        = s.finish_date
