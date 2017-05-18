@@ -2,8 +2,12 @@
 - if current_user.nil?
   = link_to new_user_session_path, class: 'login-button' do
     Sign in
-
-= link_to "Admin", admin_path if can? :manage, User
-
+- if can? :manage, User
+  = link_to admin_path, class: 'login-button' do
+    Go to Admin page
+- if current_user && current_user.is_teacher
+  = link_to "Teacher", teacher_index_path
+- if current_user && current_user.active_for_authentication?
+  = link_to "Admin", admin_path if can? :manage, User
 - if current_user && !current_user.is_teacher
   = link_to "Test", student_index_path
