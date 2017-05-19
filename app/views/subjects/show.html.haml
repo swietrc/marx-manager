@@ -43,15 +43,17 @@
 %table{ :class => "table table-striped table-hover" }
   %thead
     %tr
-      %th Prénoms
       %th Noms
+      %th Moyenne
   %tbody
     - @subject.students.sort{|x,y| x.last_name <=> y.last_name}.each do |s|
       %tr
         %td
-          = s.first_name
+          = s.first_name + " " + s.last_name
         %td
-          = s.last_name
+          - if current_user.is_teacher || s==current_user
+            = student_avg s
+
 = link_to 'Edit', edit_subject_path(@subject)
 \|
 = link_to 'Back', subjects_path
