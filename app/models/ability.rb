@@ -29,10 +29,15 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    if user != nil && user.admin?
+    user ||= User.new
+
+    if user.admin?
       can :manage, :all
-    else
+    elsif user.is_teacher
+      can :invite, User
       can :read, User
+      can :manage, Discipline
+      can :manage, Exam
     end
 
   end

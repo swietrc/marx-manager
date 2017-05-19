@@ -26,14 +26,12 @@ class SubjectsController < ApplicationController
   def create
     @subject = Subject.new(subject_params)
 
-    respond_to do |format|
-      if @subject.save
-        format.html { redirect_to @subject, notice: 'Subject was successfully created.' }
-        format.json { render :show, status: :created, location: @subject }
-      else
-        format.html { render :new }
-        format.json { render json: @subject.errors, status: :unprocessable_entity }
-      end
+    @subject.owner = current_user
+
+    if @subject.save
+      redirect_to @subject, notice: 'La matière a été créée avec succès.'
+    else
+      render :new
     end
   end
 
