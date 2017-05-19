@@ -1,15 +1,31 @@
-%p#notice= notice
-
-%p
-  %b Name:
+%h2 
   = @exam.name
-%p
-  %b Date:
-  = @exam.date
-%p
-  %b Subject:
-  = @exam.subject.name
-
 = link_to 'Edit', edit_subject_exam_path(@exam)
-\|
-= link_to 'Back', subject_exams_path
+
+%div.row
+  %div{:class => "col-xs-12 col-sm-6"}
+    %b Date:
+    = @exam.date
+  %div{:class => "col-xs-12 col-sm-6"}
+    %b Module:
+    = @exam.subject.name
+
+%hr
+
+%div{:class => "panel panel-default"}
+  %div.panel-heading
+    Gestion examens
+  %table{ :class => "table table-striped table-hover" }
+    %thead
+      %tr 
+        %th Nom
+        %th Note
+    %tbody
+      - @grades.each do |m|
+        %tr{:class => ("danger" unless m.grade > 10) }
+          %td
+            = m.student.first_name + " " + m.student.last_name
+          %td
+            = m.grade 
+
+= link_to 'Back', subject_path(@exam)
