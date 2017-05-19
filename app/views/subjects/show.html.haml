@@ -4,14 +4,17 @@
   = @subject.name
 
 = link_to 'Edit', edit_subject_path(@subject) if can? :manage, Subject
-%p
-  = "du "
-  = @subject.start_date
-  = " au "
-  = @subject.finish_date
-%p
-  = " par " + @subject.owner.first_name + " "+ @subject.owner.last_name
 
+%div.row
+  %div{:class => "col-xs-12 col-sm-3"}
+    %b du :
+    = @subject.start_date
+  %div{:class => "col-xs-12 col-sm-3"}
+    %b au :
+    = @subject.finish_date
+  %div{:class => "col-xs-12 col-sm-6"}
+    %b par :
+    = @subject.owner.first_name + " "+ @subject.owner.last_name
 
 %h1 Examens
 - if !current_user.is_teacher
@@ -26,7 +29,7 @@
       - @subject.exams.where(subject:@subject).each do |e|
         %tr{ :class => ("danger" unless e.exams_students.where(student: current_user) && e.exams_students.where(student: current_user)[0].grade>=10)}
           %td
-            = link_to e.name, subject_exam_path(e.subject,e)
+            = e.name
           %td
             = e.date
           %td
@@ -64,6 +67,6 @@
           = s.first_name + " " + s.last_name
         %td
           - if current_user.is_teacher || s==current_user
-            = student_avg s
+            = student_avg(@subject,s)
 
-= link_to 'Back', subjects_path
+= link_to 'Back', root_url

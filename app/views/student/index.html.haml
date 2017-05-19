@@ -6,6 +6,7 @@
       %th Titre
       %th Date de début
       %th Date de fin
+      %th Moyenne
   %tbody
   - @subjects.each do |s|
     %tr
@@ -15,3 +16,5 @@
         = s.start_date
       %td
         = s.finish_date
+      %td
+        = student_avg(s,current_user)
