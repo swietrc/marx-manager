@@ -10,6 +10,7 @@ class ExamsController < ApplicationController
   # GET /exams/1
   # GET /exams/1.json
   def show
+    @grades = Exam.find(params[:id]).exams_students
   end
 
   # GET /subject/1/exams/new
