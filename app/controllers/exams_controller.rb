@@ -11,6 +11,8 @@ class ExamsController < ApplicationController
   # GET /exams/1.json
   def show
     @grades = Exam.find(params[:id]).exams_students
+    @new_grade = ExamStudent.new
+    @new_grade.exam = Exam.find(params[:id])
   end
 
   # GET /subject/1/exams/new
@@ -38,6 +40,11 @@ class ExamsController < ApplicationController
         format.json { render json: @exam.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_grade
+    @grade = ExamStudent.new(exam_student_params)
+
   end
 
   # PATCH/PUT /exams/1
@@ -73,5 +80,9 @@ class ExamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def exam_params
       params.require(:exam).permit(:name, :date, :subject_id)
+    end
+
+    def exam_student_params
+      params.require(:exams_students).permit(:grade, :student_id)
     end
 end
