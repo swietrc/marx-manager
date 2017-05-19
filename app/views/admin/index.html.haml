@@ -2,7 +2,6 @@
 = link_to "Inviter des utilisateurs", new_user_invitation_path
 %br
 = link_to "Ajouter un cours", new_subject_path
-= link_to "Ajouter un contrôle", new_exam_path
 
 %div.row
   %div{:class => "col-xs-12"}
@@ -80,7 +79,7 @@
           - @exams.each do |e|
             %tr
               %td
-                = link_to e.name, e
+                = link_to e.name, subject_exam_path(e.subject, e.id)
               %td
                 = e.date
               %td

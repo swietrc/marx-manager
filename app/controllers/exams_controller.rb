@@ -12,9 +12,11 @@ class ExamsController < ApplicationController
   def show
   end
 
-  # GET /exams/new
+  # GET /subject/1/exams/new
   def new
     @exam = Exam.new
+    @exam.subject = Subject.find(params[:subject_id])
+
   end
 
   # GET /exams/1/edit
@@ -28,7 +30,7 @@ class ExamsController < ApplicationController
 
     respond_to do |format|
       if @exam.save
-        format.html { redirect_to @exam, notice: 'Exam was successfully created.' }
+        format.html { redirect_to subject_exam_path(@exam.subject, @exam), notice: 'Exam was successfully created.' }
         format.json { render :show, status: :created, location: @exam }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class ExamsController < ApplicationController
   def update
     respond_to do |format|
       if @exam.update(exam_params)
-        format.html { redirect_to @exam, notice: 'Exam was successfully updated.' }
+        format.html { redirect_to subject_exam_path(@exam.subject, @exam), notice: 'Examen édité avec succes.' }
         format.json { render :show, status: :ok, location: @exam }
       else
         format.html { render :edit }

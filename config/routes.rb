@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :exams
-  resources :subjects
   get '/admin/(:approval)', to: 'admin#index', as: 'admin'
   get '/student', to: 'student#index', as: 'student_index'
   get '/api/users/all', to: 'admin#get_all_users', defaults: { format: 'json' }
@@ -9,4 +7,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :edit, :destroy, :update]
   root to: "home#index"
+  resources :subjects do
+    resources :exams
+  end
+
 end

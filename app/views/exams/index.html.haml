@@ -16,10 +16,10 @@
         %td= exam.name
         %td= exam.date
         %td= exam.subject_id
-        %td= link_to 'Show', exam
-        %td= link_to 'Edit', edit_exam_path(exam)
-        %td= link_to 'Destroy', exam, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', subject_exam_path(exam.subject, exam)
+        %td= link_to 'Edit', edit_subject_exam_path(exam.subject, exam)
+        %td= link_to 'Destroy', subject_exam_path(exam.subject, exam), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Exam', new_exam_path
+= link_to 'New Exam', new_subject_exam_path
