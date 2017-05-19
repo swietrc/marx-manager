@@ -69,4 +69,6 @@ class SubjectsController < ApplicationController
     def subject_params
       params.require(:subject).permit(:name, :start_date, :finish_date, :owner_id)
     end
+
+
 end
