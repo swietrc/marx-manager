@@ -36,7 +36,7 @@ class Ability
     elsif user.is_teacher
       can :invite, User
       can :read, User
-      can :manage, Discipline
+      can :manage, Subject
       can :manage, Exam
     end
 
