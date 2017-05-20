@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :exams
   end
 
-  post '/subject/:subject_id/exam/:id', to: 'exam#create_grade', as: 'exam_students_path'
+  post '/subject/:subject_id/exam/:id', to: 'exam_student#create_grade', as: 'exam_students'
+  delete '/subject/:subject_id/exam/:id/:student_id', to: 'exam_student#delete', as: 'delete_exam_student'
 
 end

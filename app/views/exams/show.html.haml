@@ -20,32 +20,26 @@
       %tr 
         %th Nom
         %th Note
+        %th
     %tbody
       - @grades.each do |m|
-        %tr{:class => ("danger" unless m.grade > 10) }
+        - if m.grade
+          %tr{:class => ("danger" unless m.grade > 10) }
+            %td
+              = m.student.full_name
+            %td
+              = m.grade 
+            %td
+              = link_to "Supprimer", delete_exam_student_path(student_id: m.student_id)
+      = bootstrap_form_for(@new_grade, layout: :inline) do |f|
+        = f.text_field :exam_id, hide_label: true, style: "display: none"
+        %tr
           %td
-            = m.student.first_name + " " + m.student.last_name
+            = f.select(:student_id, options_for_select(@student_options), hide_label: true) 
           %td
-            = m.grade 
+            = f.number_field :grade, hide_label: true
+          %td
+            = f.submit 'Sauvegarder'
 
-= form_for @new_grade do |f|
-  - if @new_grade.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@grade.errors.count, "error")} prohibited this exam from being saved:"
-      %ul
-        - @new_grade.errors.full_messages.each do |msg|
-          %li= msg  
-
-  .field
-    = f.label :exam_id
-    = f.text_field :exam_id
-  .field
-    = f.label :student_id
-    = f.number_field :student_id
-  .field
-    = f.label :grade
-    = f.number_field :grade
-  .actions
-    = f.submit 'Save'
 
 = link_to 'Back', subject_path(@exam)

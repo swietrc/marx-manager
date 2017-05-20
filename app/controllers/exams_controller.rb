@@ -13,6 +13,8 @@ class ExamsController < ApplicationController
     @grades = Exam.find(params[:id]).exams_students
     @new_grade = ExamStudent.new
     @new_grade.exam = Exam.find(params[:id])
+    student_marked = ExamStudent.where(exam_id: params[:id]).map{ |s| s.student_id}
+    @student_options = Exam.find(params[:id]).students.map { |u| [u.full_name, u.id]}
   end
 
   # GET /subject/1/exams/new

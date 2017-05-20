@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'cancancan'
 gem 'jquery-datatables-rails', '~> 3.4.0'
+gem 'bootstrap_form'
 
 # gem 'therubyracer', platforms: :ruby
 
