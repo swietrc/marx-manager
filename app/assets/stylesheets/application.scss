@@ -13,12 +13,18 @@
  *= require_tree .
  *= require_self
  *= require toastr
+ *= require "_custom.css"
+ *= require rails_bootstrap_forms
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  */
 
 @import "bootstrap-sprockets";
-@import "bootstrap";
+
 
 body {
     padding-top: 70px;
+}
+
+#form_bloc {
+    width: 450px;
 }

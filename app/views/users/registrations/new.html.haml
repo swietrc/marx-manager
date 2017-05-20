@@ -1,29 +1,17 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, autofocus: true
-  .field
-    = f.label :last_name
-    %br/
-    = f.text_field :last_name
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+%div.row
+  %div#form_bloc.center-block
+    %h2 Sign up
+    = bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+
+      = f.email_field :email
+      = f.text_field :first_name, autofocus: true
+      = f.text_field :last_name
+      = f.password_field :password, autocomplete: "off"
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      = f.password_field :password_confirmation, autocomplete: "off"
+      .actions
+        = f.submit "Sign up"
+    = render "devise/shared/links"
