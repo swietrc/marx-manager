@@ -19,6 +19,7 @@ class SubjectsController < ApplicationController
 
   # GET /subjects/1/edit
   def edit
+    @subject = Subject.find(params[:id])
   end
 
   # POST /subjects

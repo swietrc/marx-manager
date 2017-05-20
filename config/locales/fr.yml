@@ -9,3 +9,6 @@ fr:
         password: "Mot de passe"
         password_confirmation: "Confirmation mot de passe"
         remember_me: "Se souvenir de moi"
+      subject:
+        start_date: "Date de début"
+        finish_date: "Date de fin"
