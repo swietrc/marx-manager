@@ -6,7 +6,7 @@ class ExamStudentController < ApplicationController
     @grade.exam_id = params[:id]
     @grade.save
 
-    redirect_to subject_exam_path(@grade.exam)
+    redirect_to subject_exam_path(@grade.exam.subject, @grade.exam)
   end
 
   def delete
@@ -14,7 +14,7 @@ class ExamStudentController < ApplicationController
     e = @grade.exam
     @grade.destroy
 
-    redirect_to subject_exam_path(e)
+    redirect_to subject_exam_path(@grade.exam.subject, e)
   end
 
   private
