@@ -56,6 +56,7 @@
             = link_to e.subject.name, e.subject
           %td
             = e.average_mark
+= link_to "Ajouter un examin", new_subject_exam_path(subject_id: @subject.id), class: "btn btn-default"
 
 %h1 Élèves
 
@@ -64,7 +65,7 @@
   %button.btn.btn-default.btn-xs#add_student_btn
     Ajouter un étudiant
 
-  %div#add_student_bloc 
+  %div#add_student_bloc
     = render "subjects/add_student_form"
 
 %table{ :class => "table table-striped table-hover table-bordered table-condensed" }
@@ -82,12 +83,12 @@
         %td
           - if current_user.is_teacher || s==current_user
             = student_avg(@subject,s)
-          - else 
+          - else
             \-
         - if current_user.is_teacher
           %td
             = link_to "Suppr.", delete_subject_student_path(student_id: s.id), :method => :delete
 
-    
+
 
 = link_to 'Back', root_url
