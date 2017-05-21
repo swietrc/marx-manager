@@ -1,5 +1,7 @@
 
 - if current_user.nil?
+  %h1 Parce que les notes sont l'opium des étudiants
+  %p
   = link_to new_user_session_path, class: 'login-button' do
     Sign in
 - if can? :manage, User
