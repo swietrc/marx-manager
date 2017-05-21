@@ -38,6 +38,9 @@ class Ability
       can :read, User
       can :manage, Subject
       can :manage, Exam
+    elsif user
+      can :read, User
+      can :read, Subject
     end
 
   end

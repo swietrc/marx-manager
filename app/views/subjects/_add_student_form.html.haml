@@ -1,0 +1,9 @@
+%div.panel.panel-default
+  %div.panel-body
+    %div.row
+      = bootstrap_form_for(@subjectStudent, layout: :inline) do |f|
+        = f.text_field :subject_id, hide_label: true, style: "display: none"
+        %div.col-xs-12.col-md-8
+          = f.select(:user_id, options_for_select(@student_options), hide_label: true)
+        %div.col-xs-12.col-md-4
+          = f.submit 'Sauvegarder', style: "btn-xs"

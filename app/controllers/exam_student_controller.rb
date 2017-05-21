@@ -5,11 +5,16 @@ class ExamStudentController < ApplicationController
     @grade = ExamStudent.new(exam_student_params)
     @grade.exam_id = params[:id]
     @grade.save
+
+    redirect_to subject_exam_path(@grade.exam)
   end
 
   def delete
-    @grade = ExamStudent.where(exam_id: params[:exam_id], student_id: params[:student_id])
+    @grade = ExamStudent.find(params[:grade_id])
+    e = @grade.exam
     @grade.destroy
+
+    redirect_to subject_exam_path(e)
   end
 
   private

@@ -13,5 +13,5 @@ User.create(first_name: 'John', last_name: 'McClane', approved: true, is_admin: 
 User.create(first_name: 'Simon', last_name: 'Wietrich', approved: true, is_admin: false, is_teacher: false, email: "simonwietrich@gmail.com", password: "azeaze", password_confirmation: "azeaze")
 
 Subject.create([
-    {name: "Piège de cristal pour les nuls", owner: User.second}
+    {name: "Piège de cristal pour les nuls", owner: User.second, start_date: Date.today, finish_date: Date.new(2025,01,01)}
 ])

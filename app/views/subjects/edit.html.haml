@@ -1,7 +1,9 @@
-%h1 Editing subject
+%div.row
+  %div#form_bloc.center-block
+    %h1 Editing subject
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', @subject
-\|
-= link_to 'Back', subjects_path
+    = link_to 'Show', @subject
+    \|
+    = link_to 'Back', subjects_path

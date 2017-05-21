@@ -1,4 +1,5 @@
 class SubjectsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
 
   # GET /subjects
@@ -10,6 +11,12 @@ class SubjectsController < ApplicationController
   # GET /subjects/1
   # GET /subjects/1.json
   def show
+    @subjectStudent = SubjectStudent.new
+    @subjectStudent.subject_id = params[:id]
+
+    exclude = Subject.find(params[:id]).students
+
+    @student_options = User.where(is_teacher: false).where.not(id: exclude).map { |u| [u.full_name, u.id]}
   end
 
   # GET /subjects/new
@@ -34,6 +41,22 @@ class SubjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  # POST /subjects/1/subscribe
+  def add_student
+    @subjectStudent = SubjectStudent.new(add_student_params)
+    @subject = Subject.find(params[:id])
+    @subjectStudent.save
+    redirect_to @subject
+  end
+
+  # DELETE /subjects/1/unsubscribe/1
+  def remove_student
+    subject = Subject.find(params[:id])
+    student = subject.students.find(params[:student_id])
+    subject.students.delete(student)
+    redirect_to @subject
   end
 
   # PATCH/PUT /subjects/1
@@ -71,5 +94,7 @@ class SubjectsController < ApplicationController
       params.require(:subject).permit(:name, :start_date, :finish_date, :owner_id)
     end
 
-
+    def add_student_params
+      params.require(:subject_student).permit(:user_id, :subject_id)
+    end
 end

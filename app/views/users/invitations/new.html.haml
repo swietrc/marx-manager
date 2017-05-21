@@ -1,16 +1,10 @@
 
-%h2= t "devise.invitations.new.header"
+%div.row
+  %div#form_bloc.center-block
+    %h2= "Inviter un nouvel utilisateur"
 
-= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f|
-  = render 'layouts/error_messages', object: resource
-  %p
-    = f.label :email
-    = f.text_field :email
-  %p
-    = f.label :firstName
-    = f.text_field :first_name
-  %p
-    = f.label :lastName
-    = f.text_field :last_name
-
-  %p= f.submit t("devise.invitations.new.submit_button")
+    = bootstrap_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f|
+      = f.text_field :email
+      = f.text_field :first_name
+      = f.text_field :last_name
+      = f.submit "Envoyer"

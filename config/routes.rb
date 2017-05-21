@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   end
 
   post '/subject/:subject_id/exam/:id', to: 'exam_student#create_grade', as: 'exam_students'
-  delete '/subject/:subject_id/exam/:id/:student_id', to: 'exam_student#delete', as: 'delete_exam_student'
+  delete '/subject/:subject_id/exam/:id/:grade_id', to: 'exam_student#delete', as: 'delete_exam_student'
+  post '/subject/:id/subscribe', to: 'subjects#add_student', as: 'subject_students'
+  delete '/subject/:id/unsubscribe/:student_id', to: 'subjects#remove_student', as: 'delete_subject_student'
+
+
 
 end

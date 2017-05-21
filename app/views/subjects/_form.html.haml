@@ -1,14 +1,6 @@
 = bootstrap_form_for @subject do |f|
-  - if @subject.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@subject.errors.count, "error")} prohibited this subject from being saved:"
-      %ul
-        - @subject.errors.full_messages.each do |msg|
-          %li= msg
-
   = f.text_field :name
   = f.date_select :start_date
   = f.date_select :finish_date
-  = f.number_field :owner_id
-.actions
-  = f.submit 'Save'
+  .actions
+    = f.submit 'Save'

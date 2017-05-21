@@ -18,7 +18,7 @@
 
 %h1 Examens
 - if !current_user.is_teacher
-  %table{ :class => "table table-striped table-hover" }
+  %table{ :class => "table table-striped table-hover table-bordered" }
     %thead
       %tr
         %th Intitulé
@@ -38,12 +38,13 @@
             - if (e.exams_students.where(student: current_user))
               = e.exams_students.where(student: current_user)[0].grade
 - else
-  %table{ :class => "table table-striped table-hover" }
+  %table{ :class => "table table-striped table-hover table-bordered table-condensed" }
     %thead
       %tr
         %th Intitulé
         %th Date
         %th Matiere
+        %th Moyenne
     %tbody
       - @subject.exams.where(subject:@subject).each do |e|
         %tr
@@ -53,13 +54,26 @@
             = e.date
           %td
             = link_to e.subject.name, e.subject
+          %td
+            = e.average_mark
 
 %h1 Élèves
-%table{ :class => "table table-striped table-hover" }
+
+- if can? :manage, Subject
+  = link_to "Inviter un étudiant", new_user_invitation_path, class: "btn btn-xs btn-primary"
+  %button.btn.btn-default.btn-xs#add_student_btn
+    Ajouter un étudiant
+
+  %div#add_student_bloc 
+    = render "subjects/add_student_form"
+
+%table{ :class => "table table-striped table-hover table-bordered table-condensed" }
   %thead
     %tr
       %th Noms
       %th Moyenne
+      - if current_user.is_teacher
+        %th
   %tbody
     - @subject.students.sort{|x,y| x.last_name <=> y.last_name}.each do |s|
       %tr
@@ -68,5 +82,12 @@
         %td
           - if current_user.is_teacher || s==current_user
             = student_avg(@subject,s)
+          - else 
+            \-
+        - if current_user.is_teacher
+          %td
+            = link_to "Suppr.", delete_subject_student_path(student_id: s.id), :method => :delete
+
+    
 
 = link_to 'Back', root_url
