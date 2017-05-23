@@ -24,3 +24,7 @@ ASSESSME_GMAIL_ACCOUNT : <votre adresse gmail>
 ASSESSME_GMAIL_PASSWORD : <le mot de passe de votre compte>
 ```
 
+## Membres du groupe
+
++ Loïc Souverain
++ Simon Wietrich
