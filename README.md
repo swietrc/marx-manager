@@ -6,12 +6,14 @@
 
 #### Création de base de données
 
-```docker-compose run app rake db:create && docker-compose run app rake db:migrate
+```
+docker-compose run app rake db:create && docker-compose run app rake db:migrate
 ```
 
 #### Démarrage de l'application
 
-```docker-compose start
+```
+docker-compose start
 ```
 
 #### Mise en place des variables d'environnement
