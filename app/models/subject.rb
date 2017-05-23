@@ -8,7 +8,6 @@ class Subject < ApplicationRecord
     has_many :students, :through => :subjects_students, :foreign_key => 'user_id', :source => :user
     has_many :exams
 
-
     def owner_is_teacher
         errors.add(:owner_id, "is not a teacher") unless owner.is_teacher?
     end
