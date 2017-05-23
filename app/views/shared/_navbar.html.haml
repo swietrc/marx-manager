@@ -10,6 +10,13 @@
           - if can? :manage, :all
             %li
               = link_to "Admin Dashboard", admin_path
+          - if current_user.is_teacher
+            %li
+              = link_to  "Dashboard Prof.", teacher_index_path
+            %li
+              = link_to "Nouveau Cours", new_subject_path
+          - else
+            = link_to "Dashboard Étudiant", student_index_path
 
       %ul{:class => "nav navbar-nav navbar-right"}
         %li
