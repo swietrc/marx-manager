@@ -27,7 +27,7 @@
         %th Note
     %tbody
       - @subject.exams.where(subject:@subject).each do |e|
-        %tr{ :class => ("danger" unless e.exams_students.where(student: current_user) && e.exams_students.where(student: current_user)[0].grade>=10)}
+        %tr{ :class => ("danger" unless !(e.exams_students.where(student: current_user).size==1 && e.exams_students.where(student: current_user)[0].grade<10))}
           %td
             = e.name
           %td
@@ -35,7 +35,7 @@
           %td
             = link_to e.subject.name, e.subject
           %td
-            - if (e.exams_students.where(student: current_user))
+            - if (e.exams_students.where(student: current_user).size==1)
               = e.exams_students.where(student: current_user)[0].grade
 - else
   %table{ :class => "table table-striped table-hover table-bordered table-condensed" }
@@ -56,7 +56,7 @@
             = link_to e.subject.name, e.subject
           %td
             = e.average_mark
-= link_to "Ajouter un examen", new_subject_exam_path(subject_id: @subject.id), class: "btn btn-default"
+= link_to "Ajouter un examen", new_subject_exam_path(subject_id: @subject.id), class: "btn btn-default" if can? :manage, Subject
 
 %h1 Élèves
 

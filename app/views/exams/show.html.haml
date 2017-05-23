@@ -1,4 +1,4 @@
-%h2 
+%h2
   = @exam.name
 = link_to 'Edit', edit_subject_exam_path(@exam)
 
@@ -15,30 +15,30 @@
 
 %hr
 
-%div{:class => "panel panel-default"}
+%div.panel.panel-default
   %div.panel-heading
     Gestion examens
   %table{ :class => "table table-striped table-hover" }
     %thead
-      %tr 
+      %tr
         %th Nom
         %th Note
         %th
     %tbody
       - @grades.each do |m|
         - if m.grade
-          %tr{:class => ("danger" unless m.grade > 10) }
+          %tr{:class => ("danger" unless m.grade >= 10) }
             %td
               = m.student.full_name
             %td
-              = m.grade 
+              = m.grade
             %td
               = link_to "Supprimer", delete_exam_student_path(grade_id: m.id), :method => :delete
       = bootstrap_form_for(@new_grade, layout: :inline) do |f|
         = f.text_field :exam_id, hide_label: true, style: "display: none"
         %tr
           %td
-            = f.select(:student_id, options_for_select(@student_options), hide_label: true) 
+            = f.select(:student_id, options_for_select(@student_options), hide_label: true)
           %td
             = f.number_field :grade, hide_label: true
           %td

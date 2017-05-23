@@ -11,10 +11,11 @@ class ExamStudentController < ApplicationController
 
   def delete
     @grade = ExamStudent.find(params[:grade_id])
-    e = @grade.exam
+    e = @grade.exam_id
+    s = @grade.exam.subject_id
     @grade.destroy
 
-    redirect_to subject_exam_path(@grade.exam.subject, e)
+    redirect_to subject_exam_path(s, e)
   end
 
   private
