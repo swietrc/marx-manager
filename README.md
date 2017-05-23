@@ -16,7 +16,10 @@ MAILER_GMAIL_ACCOUNT : <VOTRE ADRESSE GMAIL>
 MAILER_GMAIL_PASSWORD : <VOTRE MOT DE PASSE GMAIL>
 
 ```
-
+### Démarrage de l'application
+```
+rails server
+```
 
 ### (Optionel) Avec Docker et  `docker-compose` :
 
@@ -38,7 +41,11 @@ MAILER_GMAIL_PASSWORD=<VOTRE MOT DE PASSE GMAIL>
 $ docker-compose start
 ```
 
+## Tests
 
+```
+$ rails test
+```
 
 ## Membres du groupe
 + Loïc Souverain
