@@ -20,8 +20,8 @@ docker-compose start
 Créer un fichier `mailer_env.conf` à la racine du projet et le remplir avec vos
 identifiants gmail.
 ```
-ASSESSME_GMAIL_ACCOUNT : <votre adresse gmail>
-ASSESSME_GMAIL_PASSWORD : <le mot de passe de votre compte>
+MAILER_GMAIL_USERNAME=<YOUR GMAIL ADDRESS>
+MAILER_GMAIL_PASSWORD=<YOUR GMAIL PASSWORD>
 ```
 
 ## Membres du groupe
