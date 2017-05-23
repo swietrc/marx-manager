@@ -1,28 +1,24 @@
 # README
 
-## Database creation
+## Installation
 
-### With Docker and `docker-compose` :
+### Avec Docker et  `docker-compose` :
 
-Run 
-```docker-compose run app rake db:create && docker-compose run app rake db:migrate```
+#### Création de base de données
 
-Things you may want to cover:
+```docker-compose run app rake db:create && docker-compose run app rake db:migrate
+```
 
-* Ruby version
+#### Démarrage de l'application
 
-* System dependencies
+```docker-compose start
+```
 
-* Configuration
+#### Mise en place des variables d'environnement
+Créer un fichier `mailer_env.conf` à la racine du projet et le remplir avec vos
+identifiants gmail.
+```
+ASSESSME_GMAIL_ACCOUNT : <votre adresse gmail>
+ASSESSME_GMAIL_PASSWORD : <le mot de passe de votre compte>
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

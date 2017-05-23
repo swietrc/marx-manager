@@ -16,7 +16,8 @@
             %li
               = link_to "Nouveau Cours", new_subject_path
           - else
-            = link_to "Dashboard Étudiant", student_index_path
+            %li
+              = link_to "Dashboard Étudiant", student_index_path
 
       %ul{:class => "nav navbar-nav navbar-right"}
         %li
