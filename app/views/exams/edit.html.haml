@@ -1,7 +1,9 @@
-%h1 Editing exam
+%div.row
+  %div#form_bloc.center-block
+    %h1 Editing exam
 
-= render 'form'
+    = render 'form'
 
-= link_to 'Show', subject_exams_path(@exam.subject, @exam)
-\|
-= link_to 'Back', subject_exams_path
+    = link_to 'Show', subject_exams_path(@exam.subject, @exam)
+    \|
+    = link_to 'Back', subject_exams_path
